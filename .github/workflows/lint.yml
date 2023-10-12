@@ -1,0 +1,29 @@
+   yaml
+   name: Pylint with Custom Rules
+
+   on:
+     pull_request:
+       branches:
+         - main
+
+   jobs:
+     lint:
+       runs-on: ubuntu-latest
+
+       steps:
+       - name: Checkout code
+         uses: actions/checkout@v2
+
+       - name: Set up Python
+         uses: actions/setup-python@v2
+         with:
+           python-version: 3.x
+
+       - name: Install Pylint
+         run: pip install pylint
+
+       - name: Install Custom Pylint Plugin
+         run: pip install git+https://github.com/your-username/mypylintproject.git
+
+       - name: Run Pylint with Custom Rules
+         run: pylint --load-plugins mypylintplugin mymodule
