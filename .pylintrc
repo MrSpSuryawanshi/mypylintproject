@@ -1,2 +1,29 @@
+[REPORTS]
+output-format = colorized
+
 [MASTER]
-load-plugins=mypylintplugin
+init-hook = "import sys; sys.path.append('./src')"  # You can customize the init-hook as needed
+
+[MESSAGES CONTROL]
+disable = C0103, C0114, C0115, C0116  # Disable specific messages by their code
+
+[FORMAT]
+max-line-length = 100  # Customize the maximum line length
+hang-closing = false  # Prevent hanging closing brackets
+
+[BASIC]
+const-rgx = "[A-Z_][A-Z0-9_]*$"  # Customize the regular expression for constants
+
+[DESIGN]
+max-args = 5  # Set a limit on the number of function arguments
+max-returns = 3  # Limit the number of return values from a function
+max-locals = 10  # Limit the number of local variables in a function
+max-branches = 10  # Limit the number of branches (if-else conditions) in a function
+max-statements = 50  # Limit the number of statements in a function
+
+[CLASSES]
+max-parents = 3  # Limit the number of parent classes a class can have
+min-public-methods = 1  # Specify a minimum number of public methods in a class
+
+[REFACTORING]
+singleton-comparison = true  # Enable warnings for comparing with singletons using "is"
